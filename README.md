@@ -13,6 +13,9 @@
  -create signup user account
  -Implement Sign In user API
  --Created Redux store with userSlice
+--Bugfix:if the user is not sign in redirect /browse to login page
+--bugfix login issue redirect
+--add harcoded values to constant file
 
 # Features
 

@@ -5,10 +5,7 @@ const Browse = () => {
   return (
     <div>
       <Header />
-
-      <h1 className="text-white text-3xl">
-        Browse
-      </h1>
+      <h1 className="text-white">Browse Page</h1>
     </div>
   );
 };
