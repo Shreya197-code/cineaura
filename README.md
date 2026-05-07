@@ -18,6 +18,8 @@
 --add harcoded values to constant file
 --Register TMDB API & create an app get access token
 --Get data from TMDB now playing movies list API
+--create NowPlayingMovie Hooks
+
 
 # Features
 
@@ -35,6 +37,17 @@
       -Movie suggestion
         -Movie lists
 
+ -browser UI
+   MainContainer
+     -VideoBackground
+     -Videotitle
+      SecondaryContainer
+      -MovieList*n
+       --card*n
+    
+
+
  -GPT
    -Search bar
    -Movie Suggestion       
+
