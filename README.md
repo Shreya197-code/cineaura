@@ -16,6 +16,8 @@
 --Bugfix:if the user is not sign in redirect /browse to login page
 --bugfix login issue redirect
 --add harcoded values to constant file
+--Register TMDB API & create an app get access token
+--Get data from TMDB now playing movies list API
 
 # Features
 
