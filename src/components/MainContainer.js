@@ -10,12 +10,14 @@ const MainContainer = () => {
   if (!movies || movies.length === 0) return null;
 
   const mainMovie = movies[0];
-  console.log(mainMovie);
+
+  const { original_title, overview } = mainMovie;
 
   return (
-    <div>
+    <div className="relative h-screen">
       <VideoTitle
-       
+        title={original_title}
+        overview={overview}
       />
 
       <VideoBackground />
