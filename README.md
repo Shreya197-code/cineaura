@@ -18,7 +18,14 @@
 --add harcoded values to constant file
 --Register TMDB API & create an app get access token
 --Get data from TMDB now playing movies list API
---create NowPlayingMovie Hooks
+--Create NowPlayingMovie Hooks
+--Update store with movie data
+--Planning for mainContainer and SecondaryContainer
+--Fetch data for Trailer Video
+--Update store with Trailer Video Data
+-- Embeded youtube video and autoplay it
+--use tailwind CSS for better UI
+
 
 
 # Features
