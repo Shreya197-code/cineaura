@@ -25,7 +25,12 @@
 --Update store with Trailer Video Data
 -- Embeded youtube video and autoplay it
 --use tailwind CSS for better UI
-
+--Build Secondary Component
+--Build Movie List
+--Build Movie Card
+--TMDB Image CDN URL
+--Make Browser UI Responsive
+--UsepopularMovies Hook
 
 
 # Features

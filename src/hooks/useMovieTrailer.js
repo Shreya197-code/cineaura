@@ -4,28 +4,37 @@ import { addTrailerVideo } from "../utils/movieslice";
 import { useEffect } from "react";
 
 const useMovieTrialer = (movieId) => {
-  const dispatch= useDispatch();
-    const getMovieVideos =async() =>{
-   const data = await fetch ( "https://api.themoviedb.org/3/movie/"+
-    movieId+ 
-    "/videos?language=en-US" , API_OPTIONS);
-   const json =await data.json();
-   console.log(json);
-  
-   const filterData = json.results.filter(  video => video.type === "Trailer" );
-  
-  
-  const trailer = filterData.length? filterData[0]:json.results[0];
-  console.log(trailer);
-  dispatch(addTrailerVideo(trailer))
-  
-  
-    };
-  
-    useEffect(()=>{
-      getMovieVideos();
-    }, []);
 
-}
+  const dispatch = useDispatch();
 
-export default useMovieTrialer
+  const getMovieVideos = async () => {
+
+    const data = await fetch(
+      "https://api.themoviedb.org/3/movie/" +
+      movieId +
+      "/videos?language=en-US",
+      API_OPTIONS
+    );
+
+    const json = await data.json();
+
+    const filterData = json.results.filter(
+      (video) =>
+        video.type === "Trailer" &&
+        video.site === "YouTube"
+    );
+
+    const trailer =
+      filterData.find((video) => video.official === true) ||
+      filterData[0];
+
+    dispatch(addTrailerVideo(trailer));
+  };
+
+  useEffect(() => {
+    getMovieVideos();
+  }, []);
+
+};
+
+export default useMovieTrialer;
