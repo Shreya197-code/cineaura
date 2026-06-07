@@ -4,7 +4,7 @@ import { addNowPlayingMovies } from "../utils/movieslice";
 import { API_OPTIONS } from "../utils/constants";
 
 const useNowPlayingMovies = () => {
-  console.log("useNowPlayingMovies called");
+
 
   const dispatch = useDispatch();
 
@@ -17,7 +17,6 @@ const useNowPlayingMovies = () => {
 
       const jsonData = await data.json();
 
-      console.log(jsonData); // ADD HERE
 
       dispatch(addNowPlayingMovies(jsonData.results));
     } catch (error) {

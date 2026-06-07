@@ -31,6 +31,10 @@
 --TMDB Image CDN URL
 --Make Browser UI Responsive
 --UsepopularMovies Hook
+--GPT search feature
+--GPT Serach Page
+--Multi-Language feature 
+
 
 
 # Features
