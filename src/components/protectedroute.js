@@ -9,12 +9,23 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCheckingAuth(false);
-    }, 500); // small delay to let Firebase update
+    }, 400); // Small delay to let Firebase Auth resolve session
 
     return () => clearTimeout(timer);
   }, []);
 
-  if (checkingAuth) return null; // or loader
+  if (checkingAuth) {
+    return (
+      <div className="min-h-screen w-full bg-background flex flex-col items-center justify-center gap-4">
+        <img
+          src="logo_cineaura.png"
+          alt="CineAura"
+          className="w-36 drop-shadow-md animate-pulse"
+        />
+        <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   if (!user?.email) {
     return <Navigate to="/" replace />;
@@ -23,4 +34,4 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-export default ProtectedRoute;
+export default ProtectedRoute;

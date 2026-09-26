@@ -72,64 +72,90 @@ const Login = () => {
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
+    setErrorMessage(null);
   };
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-black">
+    <div className="relative min-h-screen w-full overflow-hidden bg-background flex flex-col justify-between">
       <Header />
 
-      <div className="absolute inset-0">
+      {/* Background Poster Overlay */}
+      <div className="absolute inset-0 z-0">
         <img
           src={BACKGROUND_IMAGE}
-          alt="background"
-          className="w-full h-full object-cover"
+          alt="CineAura Background"
+          className="w-full h-full object-cover opacity-40 scale-105"
         />
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/60" />
       </div>
 
-      <div className="relative z-10 flex justify-center items-center h-screen">
-        <form className="bg-black/75 p-10 rounded-2xl w-full max-w-md text-white">
-          <h1 className="text-3xl font-bold mb-6">
+      {/* Form Container */}
+      <div className="relative z-10 flex flex-1 justify-center items-center px-4 py-20">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="bg-surface-elevated/90 backdrop-blur-xl p-8 sm:p-10 rounded-lg w-full max-w-md border border-border shadow-elevated text-text"
+        >
+          <h1 className="text-2xl sm:text-3xl font-display font-bold mb-6 text-text tracking-tight">
             {isSignInForm ? "Sign In" : "Sign Up"}
           </h1>
 
           {!isSignInForm && (
-            <input
-              ref={name}
-              type="text"
-              placeholder="Full Name"
-              className="w-full p-3 mb-4 rounded bg-zinc-800"
-            />
+            <div className="mb-4">
+              <label htmlFor="nameInput" className="sr-only">Full Name</label>
+              <input
+                id="nameInput"
+                ref={name}
+                type="text"
+                placeholder="Full Name"
+                className="w-full px-4 py-3.5 rounded-md bg-surface text-text placeholder-text-muted border border-border outline-none focus:border-accent focus:ring-2 focus:ring-accent transition-all text-sm sm:text-base"
+              />
+            </div>
           )}
 
-          <input
-            ref={email}
-            type="email"
-            placeholder="Email"
-            className="w-full p-3 mb-4 rounded bg-zinc-800"
-          />
+          <div className="mb-4">
+            <label htmlFor="emailInput" className="sr-only">Email Address</label>
+            <input
+              id="emailInput"
+              ref={email}
+              type="email"
+              placeholder="Email Address"
+              className="w-full px-4 py-3.5 rounded-md bg-surface text-text placeholder-text-muted border border-border outline-none focus:border-accent focus:ring-2 focus:ring-accent transition-all text-sm sm:text-base"
+            />
+          </div>
 
-          <input
-            ref={password}
-            type="password"
-            placeholder="Password"
-            className="w-full p-3 mb-4 rounded bg-zinc-800"
-          />
+          <div className="mb-4">
+            <label htmlFor="passwordInput" className="sr-only">Password</label>
+            <input
+              id="passwordInput"
+              ref={password}
+              type="password"
+              placeholder="Password"
+              className="w-full px-4 py-3.5 rounded-md bg-surface text-text placeholder-text-muted border border-border outline-none focus:border-accent focus:ring-2 focus:ring-accent transition-all text-sm sm:text-base"
+            />
+          </div>
 
-          <p className="text-red-500 font-bold text-sm mb-4">
-            {errorMessage}
-          </p>
+          {errorMessage && (
+            <p className="text-error font-medium text-sm mb-4 bg-error/10 border border-error/20 p-3 rounded-md flex items-center gap-2">
+              <span>⚠️</span>
+              <span>{errorMessage}</span>
+            </p>
+          )}
 
           <button
             onClick={handleButtonClick}
-            className="w-full bg-red-600 py-3 rounded hover:bg-red-700 transition"
+            type="submit"
+            className="w-full bg-accent text-background font-semibold py-3.5 rounded-md hover:bg-accent-muted transition-all duration-200 shadow-card focus:outline-none focus:ring-2 focus:ring-accent active:scale-95 text-sm sm:text-base mt-2"
           >
             {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
 
           <p
             onClick={toggleSignInForm}
-            className="mt-6 cursor-pointer text-gray-300 hover:text-white"
+            className="mt-6 text-sm text-text-muted hover:text-accent cursor-pointer transition-colors text-center focus:outline-none focus:underline"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") toggleSignInForm();
+            }}
           >
             {isSignInForm
               ? "New to CineAura? Sign Up Now"
@@ -141,4 +167,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login;
