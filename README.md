@@ -59,31 +59,31 @@
 
 ```mermaid
 flowchart TD
-    User([User Client]) --> Header[Header Component]
-    User --> Router{React Router v7}
+    User(["User Client"]) --> Header["Header Component"]
+    User --> Router{"React Router v7"}
 
-    Router -->|/| Login[Login / SignUp / Forgot Password]
-    Router -->|/browse| AuthGuard{Protected Route Guard}
+    Router -->|/| Login["Login / SignUp / Forgot Password"]
+    Router -->|/browse| AuthGuard{"Protected Route Guard"}
     
-    AuthGuard -->|Authenticated| Browse[Browse Page]
+    AuthGuard -->|Authenticated| Browse["Browse Page"]
     AuthGuard -->|Unauthenticated| Login
 
-    Login -->|Auth Actions| Firebase[Firebase Auth]
-    Firebase -->|onAuthStateChanged| UserSlice[Redux User Slice]
+    Login -->|Auth Actions| Firebase["Firebase Auth"]
+    Firebase -->|onAuthStateChanged| UserSlice["Redux User Slice"]
 
-    Browse --> MainContainer[Hero Main Container]
-    Browse --> SecondaryContainer[Secondary Carousels]
-    Browse --> GPTSearch[GPT AI Search Engine]
+    Browse --> MainContainer["Hero Main Container"]
+    Browse --> SecondaryContainer["Secondary Carousels"]
+    Browse --> GPTSearch["GPT AI Search Engine"]
 
-    MainContainer -->|Fetch Trailer Key| TMDB[TMDB API]
+    MainContainer -->|Fetch Trailer Key| TMDB["TMDB API"]
     SecondaryContainer -->|Fetch Catalog Rows| TMDB
-    TMDB --> MovieSlice[Redux Movie Slice]
+    TMDB --> MovieSlice["Redux Movie Slice"]
 
-    GPTSearch -->|Search Prompt| OpenAI[OpenAI API (gpt-4o-mini)]
+    GPTSearch -->|Search Prompt| OpenAI["OpenAI API (gpt-4o-mini)"]
     OpenAI -->|5 Titles| TMDB
-    TMDB -->|Resolved Movie Objects| GPTSlice[Redux GPT Slice]
+    TMDB -->|Resolved Movie Objects| GPTSlice["Redux GPT Slice"]
 
-    Header -->|Language Toggle| ConfigSlice[Redux Config Slice]
+    Header -->|Language Toggle| ConfigSlice["Redux Config Slice"]
 ```
 
 ---
