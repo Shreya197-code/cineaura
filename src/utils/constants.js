@@ -3,7 +3,7 @@ export const LOGO_IMAGE="https://occ-0-4344-3647.1.nflxso.net/dnm/api/v6/SO2HoVC
 export const API_OPTIONS = {
   method: "GET",
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmODYyZDc5Zjk1NWYyZTgzNzhiMGIwZmE3YzE3MDliMyIsIm5iZiI6MTc3NzE5NjEyNi4zOTYsInN1YiI6IjY5ZWRkYzVlMjA1YzE4ZmM4NDkzNjQ0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TP0VpWBPfRBgoPcl394XpxVfbFqOkg-Gz5wqNQiGCKc`,
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
     accept: "application/json",
   },
 };
@@ -16,3 +16,4 @@ export const SUPPORTED_LANGUAGES = [
   { code: "es", label: "Spanish" },
   { code: "ur", label: "Urdu" },
 ];
+export const OPEN_AI_KEY = process.env.REACT_APP_OPENAI_KEY;
